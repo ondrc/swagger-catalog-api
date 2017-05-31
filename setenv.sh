@@ -1,0 +1,5 @@
+
+
+PATH="${PATH}:`npm bin`"
+
+

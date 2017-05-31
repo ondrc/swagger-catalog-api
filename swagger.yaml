@@ -23,6 +23,7 @@ paths:
           required: true
           type: number
           format: int32
+          default: 1 # workaround for Dredd, it should be `example: 1` instead, which is not supported by Swagger (yet) in parameters that are not `in: body`
       responses:
         200:
           description: category response
@@ -53,6 +54,7 @@ paths:
           required: true
           type: number
           format: int32
+          default: 1 # workaround for Dredd, it should be `example: 1` instead, which is not supported by Swagger (yet) in parameters that are not `in: body`
       responses:
         200:
           description: category response
@@ -83,6 +85,7 @@ paths:
           required: true
           type: number
           format: int32
+          default: 1 # workaround for Dredd, it should be `example: 1` instead, which is not supported by Swagger (yet) in parameters that are not `in: body`
       responses:
         200:
           description: pet response
