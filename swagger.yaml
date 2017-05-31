@@ -1,0 +1,139 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "catalog-swagger"
+  description: A sample API of a Product Catalog service.
+host: localhost
+basePath: /catalog
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /categories/{id}:
+    get:
+      description: Get category detail by id.
+      operationId: getCategory
+      parameters:
+        - name: id
+          in: path
+          description: id of the category
+          required: true
+          type: number
+          format: int32
+      responses:
+        200:
+          description: category response
+          schema:
+            $ref: "#/definitions/Category"
+  /categories/list:
+    get:
+      description: Returns all categories.
+      operationId: getCategoryIdList
+      responses:
+        200:
+          description: pet response
+          schema:
+            type: array
+            items:
+              type: number
+              format: int32
+          examples:
+            application/json: [ 1, 2, 3 ]
+  /products/{id}:
+    get:
+      description: Get product detail by id.
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          description: id of the product
+          required: true
+          type: number
+          format: int32
+      responses:
+        200:
+          description: category response
+          schema:
+            $ref: "#/definitions/Product"
+  /products/list:
+    get:
+      description: Returns all products.
+      operationId: getProductIdList
+      responses:
+        200:
+          description: pet response
+          schema:
+            type: array
+            items:
+              type: number
+              format: int32
+          examples:
+            application/json: [ 1, 2, 3, 4, 5 ]
+  /products/list/{id}:
+    get:
+      description: Returns all products in given category.
+      operationId: getProductIdListByCategory
+      parameters:
+        - name: id
+          in: path
+          description: id of the category
+          required: true
+          type: number
+          format: int32
+      responses:
+        200:
+          description: pet response
+          schema:
+            type: array
+            items:
+              type: number
+              format: int32
+          examples:
+            application/json: [ 1, 3, 5 ]
+definitions:
+  Category:
+    required:
+      - id
+      - name
+    properties:
+      id: 
+        type: number
+        format: int32
+        example: 1
+      name:
+        type: string
+        example: Software
+  Product:
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: number
+        format: int3d
+        description: Unique id.
+        example: 1
+      catId:
+        type: array
+        items:
+          type: number
+          format: int32
+        description: Array of category ids.
+        example:
+          - 1
+          - 3
+      name:
+        type: string
+        description: Human readable product name.
+        example: Notepad++
+      description:
+        type: string
+        description: Human readable product description.
+        example: A text editor on steroids
+      image:
+        type: string
+        description: Relative path to static image.
+        example: img/notepadplusplus.png
